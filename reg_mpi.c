@@ -65,16 +65,18 @@ int main(int argc, char **argv)
     simpleLinearRegression(data, numRows, numCols, &slope, &intercept, &rSquared, &mse, &mae);
     double endTime = MPI_Wtime();
 
-    // Display the results on each process
-    printf("\nRank %d - Results\n", rank);
-    printf("Rank %d - Slope: %.4f\n", rank, slope);
-    printf("Rank %d - Intercept: %.4f\n", rank, intercept);
-    printf("Rank %d - R^2: %.4f\n", rank, rSquared);
-    printf("Rank %d - MSE(Mean Square Error): %.4f\n", rank, mse);
-    printf("Rank %d - MAE(Mean Absolute Error): %.4f\n", rank, mae);
+    if (rank == 0)
+    {
+        // Display the results on each process
+        printf("Rank %d - Slope: %.4f\n", rank, slope);
+        printf("Rank %d - Intercept: %.4f\n", rank, intercept);
+        printf("Rank %d - R^2: %.4f\n", rank, rSquared);
+        printf("Rank %d - MSE(Mean Square Error): %.4f\n", rank, mse);
+        printf("Rank %d - MAE(Mean Absolute Error): %.4f\n", rank, mae);
 
-    // Display execution time on each process
-    printf("Rank %d - Execution Time: %.4f seconds\n", rank, endTime - startTime);
+        // Display execution time on each process
+        printf("Rank %d - Execution Time: %.4f seconds\n", rank, endTime - startTime);
+    }
 
     // Deallocating the memory
     for (int i = 0; i < numRows; i++)
