@@ -68,14 +68,14 @@ int main(int argc, char **argv)
     if (rank == 0)
     {
         // Display the results on each process
-        printf("Rank %d - Slope: %.4f\n", rank, slope);
-        printf("Rank %d - Intercept: %.4f\n", rank, intercept);
-        printf("Rank %d - R^2: %.4f\n", rank, rSquared);
-        printf("Rank %d - MSE(Mean Square Error): %.4f\n", rank, mse);
-        printf("Rank %d - MAE(Mean Absolute Error): %.4f\n", rank, mae);
+        printf("Slope: %.4f\n", slope);
+        printf("Intercept: %.4f\n", intercept);
+        printf("R^2: %.4f\n", rSquared);
+        printf("MSE(Mean Square Error): %.4f\n", mse);
+        printf("MAE(Mean Absolute Error): %.4f\n", mae);
 
         // Display execution time on each process
-        printf("Rank %d - Execution Time: %.4f seconds\n", rank, endTime - startTime);
+        printf("Execution Time: %.4f seconds\n", endTime - startTime);
     }
 
     // Deallocating the memory
